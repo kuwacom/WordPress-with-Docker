@@ -3,3 +3,6 @@ mysql
 
 # WordPress
 wordpress
+
+# env
+.env
