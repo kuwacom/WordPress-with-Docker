@@ -1,6 +1,6 @@
 services:
-  mysql:
-    image: mysql
+  mariadb:
+    image: mariadb
     volumes:
       - ./mysql:/var/lib/mysql
     restart: always
@@ -12,7 +12,7 @@ services:
 
   wordpress:
     depends_on:
-      - mysql
+      - mariadb
     image: wordpress:latest
     ports:
       - "80:80"
@@ -34,7 +34,7 @@ services:
       PMA_USER: ${PMA_USER}
       PMA_PASSWORD: ${PMA_PASSWORD}
     depends_on:
-      - mysql
+      - mariadb
 
   cloudflared:
     image: cloudflare/cloudflared
