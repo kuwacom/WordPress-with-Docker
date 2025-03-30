@@ -22,6 +22,9 @@ services:
       WORDPRESS_DB_HOST: ${WORDPRESS_DB_HOST}
       WORDPRESS_DB_USER: ${WORDPRESS_DB_USER}
       WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+      WP_LOCALHOST_HOSTNAME: localhost:80 # ローカル接続用のホスト名
+      WP_HOME: ${WP_HOME}
+      WP_SITEURL: ${WP_SITEURL}
     volumes:
       - ./wordpress:/var/www/html
       - ./php.ini:/usr/local/etc/php/conf.d/custom.ini

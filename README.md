@@ -125,5 +125,36 @@ docker-compose down
 docker-compose down -v
 ```
 
+## localhost でアクセスする場合
+以下のように、localhost経由でhttpで接続する時、ポートを分けるようにしないと、無限リダイレクトされてアクセスできなくなってしまいます
+
+そのため、以下のコードを `wp-config.php` へ記載する必要があります
+```php
+/**
+ * Docker でポートフォワードされたホスト名を使用している場合、WP_HOME と WP_SITEURL を設定
+ */
+if (isset($_SERVER['HTTP_HOST'])) {
+    $host = $_SERVER['HTTP_HOST'];
+
+    if ($host === getenv_docker('WP_LOCALHOST_HOSTNAME', 'localhost')) {
+        define('WP_HOME', 'http://' . getenv_docker('WP_LOCALHOST_HOSTNAME', 'localhost'));
+        define('WP_SITEURL', 'http://' . getenv_docker('WP_LOCALHOST_HOSTNAME', 'localhost'));
+    }
+}
+```
+上記のコードを記載後、`docker-compose.yml`の、wordpressサービス内の以下の環境変数に、アクセスするlocalhostアドレスを記入してください
+
+`WP_LOCALHOST_HOSTNAME`
+
+例) http://localhost:80 でアクセスする場合
+```yaml
+    ...
+    wordpress:
+        ...
+        environment:
+            ...
+            WP_LOCALHOST_HOSTNAME: localhost:80 # ローカル接続用のホスト名
+```
+
 ---
-このドキュメントを参考にして、Docker Compose + Cloudflare Tunnel を活用した WordPress の構築をスムーズに進めてください！
+以上！このドキュメントを参考にして、Docker Compose + Cloudflare Tunnel を活用した WordPress の構築をスムーズに進めてください！
