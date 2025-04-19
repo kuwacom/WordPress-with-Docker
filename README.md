@@ -1,11 +1,10 @@
 # Wordpress-with-Docker
 WordPressをDocker Compose + Cloudflare Tunnel で簡単に構築
 
-各サービスはデフォルトでは以下のポートで起動します
-
-変更する場合は、`docker-compose.yml`を編集してください
-
 ## 各種サービスデフォルトポート
+
+各サービスはデフォルトでは以下のポートで起動します  
+変更する場合は、`docker-compose.yml`を編集してください
 
 | Service Name      | 外部ポート | 内部ポート |
 | ---------------- | -------- | -------- |
@@ -13,7 +12,7 @@ WordPressをDocker Compose + Cloudflare Tunnel で簡単に構築
 | **PHP My Admin** | `8080`   | `80`     |
 
 ## 環境変数の設定
-環境変数は `.env` ファイルに記述し、Docker Compose で読み込めるようにします
+環境変数は `.env` ファイルに記述し、Docker Compose で読み込めるようにします  
 以下のように `.env` ファイルを作成してください
 
 ```env
