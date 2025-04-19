@@ -67,7 +67,7 @@ docker compose up -d
 ```
 
 ### 5. 動作確認
-ブラウザで http://localhost にアクセスし、WordPress のセットアップ画面が表示されれば成功です<br>
+ブラウザで http://localhost にアクセスし、WordPress のセットアップ画面が表示されれば成功です  
 phpMyAdmin は http://localhost:8080 で確認できます
 
 ## Cloudflare Tunnel で公開する
@@ -91,7 +91,7 @@ Cloudflare Tunnel を利用することで、外部ネットワークから Word
 設定完了後、Cloudflare Tunnel が正しく動作するか確認してください。
 
 ## `xmlrpc.php` について
-デフォルトの WordPress では、`xmlrpc.php` が有効になっています<br>
+デフォルトの WordPress では、`xmlrpc.php` が有効になっています  
 セキュリティ上の理由から、利用しない場合は無効化することを推奨します
 
 ### `.htaccess` で `xmlrpc.php` を無効化
